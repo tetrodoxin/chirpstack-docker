@@ -15,6 +15,6 @@ type="semtech_udp"
     fake_rx_time = true
 
 [integration.mqtt.auth.generic]
-servers=["tcp://localhost:1883"]
+servers=["tcp://mosquitto:1883"]
 username=""
 password=""
