@@ -5,18 +5,31 @@
 # configuration examples.
 
 [postgresql]
-dsn="postgres://chirpstack_ns:chirpstack_ns@postgresql/chirpstack_ns?sslmode=disable"
+dsn="postgres://chirpstack_ns:chirpstack_ns@localhost/chirpstack_ns?sslmode=disable"
 
 [redis]
-url="redis://redis:6379"
+url="redis://localhost:6379"
 
 [network_server]
-net_id="000000"
+net_id="000001"
+
+[network_server.api]
+bind="0.0.0.0:8000"
 
 [network_server.band]
 name="EU868"
 
 [network_server.network_settings]
+
+rx_window=0
+rx1_delay=1
+rx1_dr_offset=0
+rx2_dr=-1
+rx2_frequency=-1
+rx2_prefer_on_rx1_dr_lt=0
+rx2_prefer_on_link_budget=false
+disable_mac_commands=false
+disable_adr=false
 
   [[network_server.network_settings.extra_channels]]
   frequency=867100000
@@ -44,10 +57,10 @@ name="EU868"
   max_dr=5
 
 [network_server.gateway.backend.mqtt]
-server="tcp://mosquitto:1883"
+server="tcp://localhost:1883"
 
 [join_server.default]
-server="http://chirpstack-application-server:8003"
+server="http://localhost:8003"
 
 [geolocation_server]
-server="chirpstack-geolocation-server:8005"
+server="localhost:8005"

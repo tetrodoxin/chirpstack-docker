@@ -1,6 +1,11 @@
 # See https://www.chirpstack.io/geolocation-server/install/config/ for a full
 # configuration example and documentation.
 
+[geo_server]
+
+[geo_server.api]
+bind="0.0.0.0:8005"
+
 [geo_server.backend]
 name="collos"
 
