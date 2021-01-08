@@ -1,0 +1,4 @@
+[submodule "fuota-server"]
+	path = fuota-server
+	url = /home/hub/bak/chirpstack-fuota.git
+	branch = with_clocksync
