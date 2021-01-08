@@ -2,28 +2,40 @@ version: "3"
 
 services:
   chirpstack-network-server:
-    image: chirpstack/chirpstack-network-server:3
+    image: chirpstack/chirpstack-network-server@sha256:995cd8594fbd5b6cb722c2bb34332ed5047ac4b54f342b312866d7d73eb909f2
     volumes:
       - ./configuration/chirpstack-network-server:/etc/chirpstack-network-server
 
   chirpstack-application-server:
-    image: chirpstack/chirpstack-application-server:3
+    image: chirpstack/chirpstack-application-server@sha256:aa6c5e571179f07ec56fec5d0ce09ed19f2775fee5588f333bad6cb1e39a7cb5
     ports:
       - 8080:8080
     volumes:
       - ./configuration/chirpstack-application-server:/etc/chirpstack-application-server
 
   chirpstack-gateway-bridge:
-    image: chirpstack/chirpstack-gateway-bridge:3
+    image: chirpstack/chirpstack-gateway-bridge@sha256:4c3633a50b5a35de5ad92b462c66580ef1ef046d6aa429cbe2da3115fb6c56ab
     ports:
       - 1700:1700/udp
     volumes:
       - ./configuration/chirpstack-gateway-bridge:/etc/chirpstack-gateway-bridge
 
   chirpstack-geolocation-server:
-    image: chirpstack/chirpstack-geolocation-server:3
+    image: chirpstack/chirpstack-geolocation-server@sha256:37b7b242d1c3b92ee07c6cf5ec61b2c8d7964029334e3640f6b0361b3fb58dd2
     volumes:
       - ./configuration/chirpstack-geolocation-server:/etc/chirpstack-geolocation-server
+
+  chirpstack-fuota-server:
+    image: chirpstack/chirpstack-fuota-server@sha256:42be664ca89217e993b9fc8e62de21a89eb5b460c83567beae89fe4856af6f6a
+    volumes:
+      - ./configuration/chirpstack-fuota-server:/etc/chirpstack-fuota-server
+    entrypoint:
+      - "/usr/bin/chirpstack-fuota-server"
+      - "-c"
+      - "/etc/chirpstack-fuota-server/chirpstack-fuota-server.toml"
+    ports:
+      - "8070:8070"
+      - "8090:8090"
 
   postgresql:
     image: postgres:9.6-alpine
