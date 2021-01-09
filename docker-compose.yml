@@ -30,6 +30,7 @@ services:
     build:
       context: ./fuota-server
       dockerfile: Dockerfile-local
+    restart: on-failure:3
     volumes:
       - ./configuration/chirpstack-fuota-server:/etc/chirpstack-fuota-server
     entrypoint:
