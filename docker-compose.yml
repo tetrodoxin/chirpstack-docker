@@ -26,7 +26,10 @@ services:
       - ./configuration/chirpstack-geolocation-server:/etc/chirpstack-geolocation-server
 
   chirpstack-fuota-server:
-    image: chirpstack/chirpstack-fuota-server@sha256:42be664ca89217e993b9fc8e62de21a89eb5b460c83567beae89fe4856af6f6a
+    #image: chirpstack/chirpstack-fuota-server@sha256:42be664ca89217e993b9fc8e62de21a89eb5b460c83567beae89fe4856af6f6a
+    build:
+      context: ./fuota-server
+      dockerfile: Dockerfile-local
     volumes:
       - ./configuration/chirpstack-fuota-server:/etc/chirpstack-fuota-server
     entrypoint:
