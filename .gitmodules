@@ -2,3 +2,7 @@
 	path = fuota-server
 	url = /home/hub/bak/chirpstack-fuota.git
 	branch = with_clocksync
+[submodule "network-server"]
+	path = network-server
+	url = https://github.com/tetrodoxin/chirpstack-ns.git
+	branch = configurable_mc_scheduler
