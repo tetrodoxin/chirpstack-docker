@@ -2,7 +2,10 @@ version: "3"
 
 services:
   chirpstack-network-server:
-    image: chirpstack/chirpstack-network-server@sha256:995cd8594fbd5b6cb722c2bb34332ed5047ac4b54f342b312866d7d73eb909f2
+    #image: chirpstack/chirpstack-network-server@sha256:995cd8594fbd5b6cb722c2bb34332ed5047ac4b54f342b312866d7d73eb909f2
+    build:
+      context: ./network-server
+      dockerfile: Dockerfile
     volumes:
       - ./configuration/chirpstack-network-server:/etc/chirpstack-network-server
 
